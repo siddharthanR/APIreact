@@ -3,28 +3,25 @@ import TextBox from "../src/Components/TextBox";
 import Button from "../src/Components/Button";
 import Axios from "axios";
 
-class Post extends React.Component {
+class Delete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ""
+      id: ""
     };
   }
   onInputChange = (event) => {
     this.setState({
-      value: event.target.value
+      id: event.target.id
     });
   };
   onHandleSubmit = (event) => {
     event.preventDefault();
-    const user = {
-      name: this.state.value
-    };
-    Axios.post(`https://jsonplaceholder.typicode.com/users`, { user }).then(
-      (response) => {
-        console.log(response.data);
-      }
-    );
+    Axios.delete(
+      `https://jsonplaceholder.typicode.com/users/${this.state.id}`
+    ).then((response) => {
+      console.log(response.data);
+    });
   };
   render() {
     return (
@@ -40,4 +37,4 @@ class Post extends React.Component {
   }
 }
 
-export default Post;
+export default Delete;
