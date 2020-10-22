@@ -7,12 +7,12 @@ class Delete extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: ""
+      id: 0
     };
   }
   onInputChange = (event) => {
     this.setState({
-      id: event.target.id
+      id: event.target.value
     });
   };
   onHandleSubmit = (event) => {
@@ -26,11 +26,7 @@ class Delete extends React.Component {
   render() {
     return (
       <div>
-        <TextBox
-          type="text"
-          placeholder="Input"
-          onChange={this.onInputChange}
-        />
+        <TextBox type="text" onChange={this.onInputChange} />
         <Button type="submit" onClick={this.onHandleSubmit} />
       </div>
     );
